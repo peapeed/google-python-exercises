@@ -25,14 +25,19 @@
 # and donuts(23) returns 'Number of donuts: many'
 def donuts(count):
   if count < 10:
-    return f'Number of donuts:{count}'
+    return f'Number of donuts: {count}'
   else:
-    return 'Number of donuts:many'
+    return 'Number of donuts: many'
+def test(got, expected):
+  if got == expected:
+    print (' OK')
+  else:
+    print(f' X got: {got} expected: {expected}')
+
   # +++your code here+++
   return
 
 #-- Test cases --
-
 
 
 # B. both_ends
@@ -41,8 +46,12 @@ def donuts(count):
 # so 'spring' yields 'spng'. However, if the string length
 # is less than 2, return instead the empty string.
 def both_ends(s):
+    # Check if the string has at least 2 characters
+    if len(s) < 2:
+        return ''  # Return an empty string if length is less than 2
+    else:
+        return s[:2] + s[-2:]  # Combine the first 2 and last 2 characters
   # +++your code here+++
-  return
 
 
 # C. fix_start
@@ -74,11 +83,13 @@ def mix_up(a, b):
 # Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(got, expected):
-  if got == expected:
-    prefix = ' OK '
-  else:
-    prefix = '  X '
-  print('%s got: %s expected: %s' % (prefix, repr(got), repr(expected)))
+    if got == expected:
+        prefix = ' OK '
+    else:
+        prefix = '  X '  # This line should be aligned with the previous line
+
+    # This print statement should be indented to the same level as the 'if' and 'else' blocks
+    print('%s got: %s expected: %s' % (prefix, repr(got), repr(expected)))
 
 
 # Provided main() calls the above functions with interesting inputs,
@@ -90,6 +101,13 @@ def main():
   test(donuts(9), 'Number of donuts: 9')
   test(donuts(10), 'Number of donuts: many')
   test(donuts(99), 'Number of donuts: many')
+
+  # Function to help test
+def test(got, expected):
+  if got == expected:
+    print('  OK')
+  else:
+    print(f'  X got: {got} expected: {expected}')
 
   print()
   print('both_ends')
@@ -117,3 +135,4 @@ def main():
 # Standard boilerplate to call the main() function.
 if __name__ == '__main__':
   main()
+
