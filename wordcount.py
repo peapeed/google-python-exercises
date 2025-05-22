@@ -38,12 +38,31 @@ print_words() and print_top().
 """
 
 import sys
+def get_word_counts(filename):
+  """Reads file and returns a dictionary of word counts."""
+  word_count = {} 
+  with open(filename, 'r', encoding='utf-8') as f:
+    text = f.read()
+    words = text.lower().split()
+    for word in words:
+      word_count[word] = word_count.get(word,0) +1
+    return word_count
+     # +++your code here+++
 
-# +++your code here+++
 # Define print_words(filename) and print_top(filename) functions.
+def print_words(filename):
+    word_counts = get_word_counts(filename)
+    for word in sorted(word_count.keys()):
+      print(word, word_counts[word])
+
 # You could write a helper utility function that reads a file
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
+def print_top(filename):
+  word_counts = get_word_counts(filename)
+  sorted_items = sorted(word_counts.items(), key=lambda item: item[1], reverse=True)
+  for word, count in sorted_items[:20]:
+    print(word,count)
 
 ###
 
